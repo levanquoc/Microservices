@@ -2,6 +2,7 @@ package com.example.springbootrestfulwebservies.service.impl;
 
 import com.example.springbootrestfulwebservies.dto.UserDTO;
 import com.example.springbootrestfulwebservies.entity.User;
+import com.example.springbootrestfulwebservies.mapper.AutoUserMapper;
 import com.example.springbootrestfulwebservies.mapper.UserMapper;
 import com.example.springbootrestfulwebservies.repository.UserRepository;
 import com.example.springbootrestfulwebservies.service.UserService;
@@ -22,10 +23,13 @@ public class UserServiceImpl implements UserService {
     public UserDTO createUser(UserDTO userDTO) {
         //convert userDTO into user
         //User user = UserMapper.mapToUser(userDTO);
-        User user = modelMapper.map(userDTO,User.class);
+        //User user = modelMapper.map(userDTO,User.class);
+        User user = AutoUserMapper.MAPPER.mapToUser(userDTO);
         userRepository.save(user);
         //convert user into userDTO
-        UserDTO savedUserDTO = modelMapper.map(user,UserDTO.class);
+        //UserDTO savedUserDTO = modelMapper.map(user,UserDTO.class);\
+        UserDTO savedUserDTO =AutoUserMapper.MAPPER.mapToUserDTo(user);
+
         return savedUserDTO;
     }
 
