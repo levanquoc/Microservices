@@ -9,7 +9,7 @@ public interface UserService {
     UserDTO createUser(UserDTO user);
     UserDTO getUserById(Long id);
     List<UserDTO> getAllUser();
-    User updateUser(User user);
+    UserDTO updateUser(UserDTO user);
     void deteleUserById(long id);
 
 
